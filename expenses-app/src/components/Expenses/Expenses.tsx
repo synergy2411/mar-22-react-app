@@ -30,28 +30,28 @@ let INITIAL_EXPENSES: IExpense[] = [
 const Expenses = () => {
   const [expenses, setExpenses] = useState<IExpense[]>([...INITIAL_EXPENSES]);
   const [showForm, setShowForm] = useState<boolean>(false);
-  const [initialYear, setInitialYear] = useState<string>('2019')
-  const [filteredExpenses, setFilteredExpenses] = useState<IExpense[]>(expenses.filter(exp => exp.createdAt.getFullYear().toString() === '2019' ))
+  const [initialYear, setInitialYear] = useState<string>("2019");
 
-  const [selectedYear, setSelectedYear] = useState('');
+  let filteredExpenses : IExpense[] = [];
 
   const clickHandler = () => {
     setShowForm(!showForm);
   };
-
   const onAddExpense = (newExpense: IExpense) => {
-    setExpenses((prevState) => [newExpense, ...prevState]);
+    setExpenses((prevState) => {
+      return [newExpense, ...prevState];
+    });
     setShowForm(false);
   };
 
-  const onYearSelect = (selectYear : string) => {
-      setInitialYear(selectYear);
-    setFilteredExpenses(expenses.filter(exp => exp.createdAt.getFullYear().toString() === selectYear)) 
-  }
 
-  if(initialYear !== '2019'){
-    setFilteredExpenses(expenses.filter(exp => exp.createdAt.getFullYear().toString() === initialYear)) 
-  }
+  const onYearSelect = (selectYear: string) => {
+    setInitialYear(selectYear);
+  };
+
+  filteredExpenses = expenses.filter(
+    (exp) => exp.createdAt.getFullYear().toString() === initialYear
+  );
 
   return (
     <div className="container">
@@ -66,12 +66,15 @@ const Expenses = () => {
           </button>
         </div>
         <div className="col-4">
-          <FilterExpense initialYear={initialYear} onYearSelect={onYearSelect}/>
+          <FilterExpense
+            initialYear={initialYear}
+            onYearSelect={onYearSelect}
+          />
         </div>
       </div>
       <br />
       <div className="row">
-        {  filteredExpenses.map((exp) => {
+        {filteredExpenses.map((exp) => {
           return (
             <ExpenseItem
               id={exp.id}
@@ -82,7 +85,6 @@ const Expenses = () => {
             />
           );
         })}
-        
       </div>
       <div className="row">
         {/* {showForm ? <AddExpense /> : 'Click the button to add new item'} */}
