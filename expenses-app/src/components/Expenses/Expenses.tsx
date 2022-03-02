@@ -28,8 +28,12 @@ let INITIAL_EXPENSES: IExpense[] = [
 ];
 
 const Expenses = () => {
-  const [expenses, setExpenses] = useState<IExpense[]>(INITIAL_EXPENSES);
+  const [expenses, setExpenses] = useState<IExpense[]>([...INITIAL_EXPENSES]);
   const [showForm, setShowForm] = useState<boolean>(false);
+  const [initialYear, setInitialYear] = useState<string>('2019')
+  const [filteredExpenses, setFilteredExpenses] = useState<IExpense[]>(expenses.filter(exp => exp.createdAt.getFullYear().toString() === '2019' ))
+
+  const [selectedYear, setSelectedYear] = useState('');
 
   const clickHandler = () => {
     setShowForm(!showForm);
@@ -39,6 +43,15 @@ const Expenses = () => {
     setExpenses((prevState) => [newExpense, ...prevState]);
     setShowForm(false);
   };
+
+  const onYearSelect = (selectYear : string) => {
+      setInitialYear(selectYear);
+    setFilteredExpenses(expenses.filter(exp => exp.createdAt.getFullYear().toString() === selectYear)) 
+  }
+
+  if(initialYear !== '2019'){
+    setFilteredExpenses(expenses.filter(exp => exp.createdAt.getFullYear().toString() === initialYear)) 
+  }
 
   return (
     <div className="container">
@@ -53,28 +66,23 @@ const Expenses = () => {
           </button>
         </div>
         <div className="col-4">
-            <FilterExpense />
+          <FilterExpense initialYear={initialYear} onYearSelect={onYearSelect}/>
         </div>
       </div>
+      <br />
       <div className="row">
-        <ExpenseItem
-          id={expenses[0].id}
-          title={expenses[0].title}
-          body={expenses[0].body}
-          createdAt={expenses[0].createdAt}
-        />
-        <ExpenseItem
-          id={expenses[1].id}
-          title={expenses[1].title}
-          body={expenses[1].body}
-          createdAt={expenses[1].createdAt}
-        />
-        <ExpenseItem
-          id={expenses[2].id}
-          title={expenses[2].title}
-          body={expenses[2].body}
-          createdAt={expenses[2].createdAt}
-        />
+        {  filteredExpenses.map((exp) => {
+          return (
+            <ExpenseItem
+              id={exp.id}
+              title={exp.title}
+              body={exp.body}
+              createdAt={exp.createdAt}
+              key={exp.id}
+            />
+          );
+        })}
+        
       </div>
       <div className="row">
         {/* {showForm ? <AddExpense /> : 'Click the button to add new item'} */}
