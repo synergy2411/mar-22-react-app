@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Expenses from './components/Expenses/Expenses';
+import Demo from "./components/demo/Demo";
 
 function App() {
   return (

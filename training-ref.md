@@ -67,3 +67,7 @@ React v16.8 - hooks - simple function, provide some functionality
 - useEffect
 - useContext
 - useParams
+
+# Packages Commands
+- npm i bootstrap@4
+- npm i uuid @types/uuid

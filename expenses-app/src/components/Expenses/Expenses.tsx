@@ -3,44 +3,58 @@ import { IExpense } from "../../model/expenses";
 import AddExpense from "./AddExpense/AddExpense";
 import ExpenseDate from "./ExpenseDate/ExpenseDate";
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
+import FilterExpense from "./FillterExpenses/FilterExpense";
+// import { INITIAL_EXPENSES } from '../../model/mocks';
+
+let INITIAL_EXPENSES: IExpense[] = [
+  {
+    id: "e101",
+    title: "grocery",
+    body: "to buy the pulses",
+    createdAt: new Date("Dec 21, 2019"),
+  },
+  {
+    id: "e102",
+    title: "shopping",
+    body: "to buy jeans",
+    createdAt: new Date("Jan 1, 2020"),
+  },
+  {
+    id: "e103",
+    title: "plants",
+    body: "to pot the plants",
+    createdAt: new Date("Aug 12, 2021"),
+  },
+];
 
 const Expenses = () => {
-  const expenses: IExpense[] = [
-    {
-      id: "e101",
-      title: "grocery",
-      body: "to buy the pulses",
-      createdAt: new Date("Dec 21, 2019"),
-    },
-    {
-      id: "e102",
-      title: "shopping",
-      body: "to buy jeans",
-      createdAt: new Date("Jan 1, 2020"),
-    },
-    {
-      id: "e103",
-      title: "plants",
-      body: "to pot the plants",
-      createdAt: new Date("Aug 12, 2021"),
-    },
-  ];
-
-  const [showForm, setShowForm] = useState<boolean>(false)
+  const [expenses, setExpenses] = useState<IExpense[]>(INITIAL_EXPENSES);
+  const [showForm, setShowForm] = useState<boolean>(false);
 
   const clickHandler = () => {
-      setShowForm(!showForm);
-  }
+    setShowForm(!showForm);
+  };
+
+  const onAddExpense = (newExpense: IExpense) => {
+    setExpenses((prevState) => [newExpense, ...prevState]);
+    setShowForm(false);
+  };
 
   return (
     <div className="container">
       <p className="text-center display-4">My Expenses App</p>
       <div className="row">
-          <div className="col-4 offset-4">
-              <button className="btn btn-secondary btn-block" onClick={clickHandler}>
-                  {showForm ? 'Hide Form' : 'Add Expense'}
-              </button>
-          </div>
+        <div className="col-4 offset-4">
+          <button
+            className="btn btn-secondary btn-block"
+            onClick={clickHandler}
+          >
+            {showForm ? "Hide Form" : "Add Expense"}
+          </button>
+        </div>
+        <div className="col-4">
+            <FilterExpense />
+        </div>
       </div>
       <div className="row">
         <ExpenseItem
@@ -63,8 +77,8 @@ const Expenses = () => {
         />
       </div>
       <div className="row">
-          {/* {showForm ? <AddExpense /> : 'Click the button to add new item'} */}
-          {showForm && <AddExpense />}
+        {/* {showForm ? <AddExpense /> : 'Click the button to add new item'} */}
+        {showForm && <AddExpense onAddExpense={onAddExpense} />}
       </div>
     </div>
   );
