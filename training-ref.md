@@ -71,3 +71,18 @@ React v16.8 - hooks - simple function, provide some functionality
 # Packages Commands
 - npm i bootstrap@4
 - npm i uuid @types/uuid
+
+
+- React Introduction
+- Props
+- functional components
+- state management in functional component
+- Lifting up the state - functional props
+- control the form element state
+
+
+- Styles
+- Form Validation
+- Hooks / hitting REST endpoints
+- SPA
+- Context API

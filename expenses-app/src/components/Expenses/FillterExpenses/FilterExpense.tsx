@@ -5,7 +5,6 @@ const FilterExpense : React.FC<{
     initialYear : string
 }> = (props) => {
     const changeHandler = (event : React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(event.target.value)
         props.onYearSelect(event.target.value);
     }
     return (

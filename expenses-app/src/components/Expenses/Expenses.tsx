@@ -44,7 +44,6 @@ const Expenses = () => {
     setShowForm(false);
   };
 
-
   const onYearSelect = (selectYear: string) => {
     setInitialYear(selectYear);
   };
