@@ -59,8 +59,6 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
 
     const mySubmitHandler = (data: any) => {
         console.log("Title : ", data.enteredTitle);
-        console.log(control);
-        console.log(getValues());
         
     };
 
@@ -68,6 +66,9 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
         // console.log(e.target.value);
         console.log("Enetered Title : ", control._formValues);
     }
+
+    
+
     return (
         <div className="col-6 offset-3">
             <div className="card">
@@ -88,7 +89,8 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                                 <div className="col-8">
                                     <input type="text"
                                         {...register("enteredTitle", { 
-                                            required : true                            })} 
+                                            required : true
+                                        })} 
                                         onChange = {enteredTitleChangeHandler}/>
                                     <p>{errors.enteredTitle && "Title is required field"}</p>
                                     {/* <input type="text" 
