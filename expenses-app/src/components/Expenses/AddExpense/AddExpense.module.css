@@ -1,0 +1,14 @@
+.my-style{
+    background-color : teal;
+    border-radius : 10px;
+    color : white;
+}
+.my-style:hover {
+    background-color : aqua;
+    font-size : 1.2em;
+    color: black;
+}
+
+.feature{
+    border: 2px red dashed;
+}

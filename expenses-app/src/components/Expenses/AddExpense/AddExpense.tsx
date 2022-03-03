@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
+import Radium from 'radium';
 import { IExpense } from "../../../model/expenses";
 import { v4 } from 'uuid';
+// import "./AddExpense.css";
+import classes from './AddExpense.module.css';
 
 const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
     // let title = "insurance";
@@ -40,6 +43,16 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
         props.onAddExpense(newExpense);
         
     }
+
+    // const style = {
+    //     backgroundColor : "teal",
+    //     borderRadius : '10px',
+    //     color : "white",
+    //     ":hover" : {
+    //         backgroundColor : "grey",
+    //         fontSize : "1.2em"
+    //     }
+    // }
     return (
         <div className="col-6 offset-3">
             <div className="card">
@@ -102,11 +115,19 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                         <div className="form-group">
                             <div className="row">
                                 <div className="col-6">
-                                    <button className="btn btn-block btn-primary" type="submit">
+                                    {/* <button className="btn btn-block btn-primary" type="submit">
+                                        Add Expense
+                                    </button> */}
+                                    <button 
+                                        className={`form-control ${classes.feature} ${classes['my-style']}`} 
+                                        type="submit">
                                         Add Expense
                                     </button>
                                 </div>
-                                <div className="col-6"></div>
+                                <div className="col-6">
+                                    {/* <button style={style}> Cancel</button> */}
+                                    <button className={classes.feature}> Cancel</button>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -116,4 +137,4 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
     )
 }
 
-export default AddExpense;
+export default Radium(AddExpense);
