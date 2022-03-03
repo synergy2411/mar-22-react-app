@@ -37,8 +37,8 @@ const reducerFn = (prevState: CounterState, action: Action) : CounterState=> {
 };
 
 const UseReducer = () => {
-  const [state, dispatchFn] = useReducer(reducerFn, { counter: 0, result : [] });
-
+    const [state, dispatchFn] = useReducer(reducerFn, { counter: 0, result : [] });
+  
   const increaseHandler = () => {
     dispatchFn({
       type: ActionTypes.INCREMENT,

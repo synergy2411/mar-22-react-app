@@ -4,6 +4,8 @@ import AddExpense from "./AddExpense/AddExpense";
 import ExpenseDate from "./ExpenseDate/ExpenseDate";
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
 import FilterExpense from "./FillterExpenses/FilterExpense";
+import AuthContext from '../../context/auth-context';
+
 // import { INITIAL_EXPENSES } from '../../model/mocks';
 
 let INITIAL_EXPENSES: IExpense[] = [
@@ -53,6 +55,7 @@ const Expenses = () => {
   );
 
   return (
+    <AuthContext.Provider value={{isLoggedIn : true}}>
     <div className="container">
       <p className="text-center display-4">My Expenses App</p>
       <div className="row">
@@ -90,6 +93,7 @@ const Expenses = () => {
         {showForm && <AddExpense onAddExpense={onAddExpense} />}
       </div>
     </div>
+    </AuthContext.Provider>
   );
 };
 

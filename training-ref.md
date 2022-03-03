@@ -82,7 +82,64 @@ React v16.8 - hooks - simple function, provide some functionality
 
 
 - Styles
+    > inline styles : Radium
+    > CSS Module system : CSS Scoped to component
+    > Global CSS : import CSS file 
 - Form Validation
+    > react-form-hook
+    > formik
 - Hooks / hitting REST endpoints
 - SPA
 - Context API
+
+
+#  to installl Radium
+> npm install radium @types/radium
+
+# to validate form control
+> npm install react-hook-form
+
+
+# Component Types (before v16.8) - useState()
+- Stateless / Functional Comp / Presentational Comp / Dump
+- Stateful / Class Based / Container Comp / Smart
+
+- Functional Components : useEffect()
+
+
+# React - to render the UI quickly
+> Side Effects - e.g set the state, making XHR call, async operation etc
+
+# Working with useEffect -
+- useEffect(CallbackFn) : executes at initial stage/rendering and after each state update
+- useEffect(CallbackFn, []) / componentDidMount : execute after initial rendering 
+- useEffect(CallbackFn, [Dependencies]) / componentDidUpdate : execute after initial rendering and after each dependency state update
+- useEffect(CallbackFn => CleanupFn, [Dependencies]) / componentWillUnmount : Clean-up function executes before callback function, but NOT after initial rendering
+
+- Initial Rendering : UseEffect Callback Function
+- update the state (Counter, isValid) - 
+    > Clean-up Function
+    > UseEffect Callback Function
+- Unload the Component
+    > Clean-up Function
+
+
+# useReducer - maintain the complex state; one state is dependent on other state;
+
+const [state, dispatchFn] = useReducer(reducerFn, initialState)
+
+reducerFn = (prevState, action) => newState
+
+# useContext : Context API
+# useRef : direct access to DOM using references
+
+
+# useParams
+# useHistory
+# useLocation
+
+
+http://our-domain.com/about -> About Component
+http://our-domain.com/products -> Products Component
+
+# npm install react-router-dom@5 @types/react-router-dom@5
