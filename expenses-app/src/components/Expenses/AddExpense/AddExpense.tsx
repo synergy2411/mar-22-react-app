@@ -119,14 +119,14 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                                         Add Expense
                                     </button> */}
                                     <button 
-                                        className={`form-control ${classes.feature} ${classes['my-style']}`} 
+                                        className={`${classes.feature} ${classes['my-style']}`} 
                                         type="submit">
                                         Add Expense
                                     </button>
                                 </div>
                                 <div className="col-6">
                                     {/* <button style={style}> Cancel</button> */}
-                                    <button className={classes.feature}> Cancel</button>
+                                    <button className={`${classes.feature} ${classes["cancel-button"]}`}> Cancel</button>
                                 </div>
                             </div>
                         </div>

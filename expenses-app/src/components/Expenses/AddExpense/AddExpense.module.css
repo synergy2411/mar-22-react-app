@@ -2,6 +2,8 @@
     background-color : teal;
     border-radius : 10px;
     color : white;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
 }
 .my-style:hover {
     background-color : aqua;
@@ -11,4 +13,17 @@
 
 .feature{
     border: 2px red dashed;
+}
+
+.cancel-button{
+    background-color: salmon;
+    color: black;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.cancel-button:hover{
+    background-color: red;
+    color: white;
 }
