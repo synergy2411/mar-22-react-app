@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Radium from 'radium';
+import { useForm } from "react-hook-form";
 import { IExpense } from "../../../model/expenses";
 import { v4 } from 'uuid';
 // import "./AddExpense.css";
@@ -10,6 +11,8 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
     const [title, setTitle] = useState<string>('');
     const [body, setBody] = useState<string>('');
     const [createdAt, setCreatedAt] = useState<string>('')
+
+    const {register, handleSubmit, formState : { errors }} = useForm()
 
     // const [userInput, setUserInput] = useState({
     //     title : '',
@@ -53,6 +56,9 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
     //         fontSize : "1.2em"
     //     }
     // }
+
+    const mySubmitHandler = (data: any) => console.log(data);
+
     return (
         <div className="col-6 offset-3">
             <div className="card">
@@ -62,7 +68,8 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                     </h6>
                 </div>
                 <div className="card-body">
-                    <form onSubmit={submitHandler}>
+                    {/* <form onSubmit={submitHandler}> */}
+                    <form onSubmit={handleSubmit(mySubmitHandler)}>
                         {/* title */}
                         <div className="form-group">
                             <div className="row">
@@ -70,12 +77,14 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                                     <label htmlFor="title">Title :</label>
                                 </div>
                                 <div className="col-8">
-                                    <input type="text" 
+                                    <input type="text" {...register("enteredTitle", { required : true})} />
+                                    <p>{errors.enteredTitle && "Title is required field"}</p>
+                                    {/* <input type="text" 
                                     id="title"
                                         value={title} 
                                         className="form-control" 
                                         name="title" 
-                                        onChange={titleChangeHandler}/>
+                                        onChange={titleChangeHandler}/> */}
                                 </div>
                             </div>
                         </div>
@@ -86,11 +95,12 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                                     <label htmlFor="body">Body :</label>
                                 </div>
                                 <div className="col-8">
-                                    <input type="text" 
+                                <input type="text" {...register("enteredBody")} />
+                                    {/* <input type="text" 
                                         value={body} 
                                         className="form-control" 
                                         name="body" 
-                                        onChange={bodyChangeHandler}/>
+                                        onChange={bodyChangeHandler}/> */}
                                 </div>
                             </div>
                         </div>
@@ -101,13 +111,14 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                                     <label htmlFor="createdAt">Created At :</label>
                                 </div>
                                 <div className="col-8">
-                                    <input type="date" 
+                                    <input type="date" {...register("createdAt")} />
+                                    {/* <input type="date" 
                                         name="createdAt" 
                                         className="form-control"
                                         min="03-01-2019"
                                         max="12-31-2022"
                                         value={createdAt}
-                                        onChange={createdAtChangeHandler} />
+                                        onChange={createdAtChangeHandler} /> */}
                                 </div>
                             </div>
                         </div>
