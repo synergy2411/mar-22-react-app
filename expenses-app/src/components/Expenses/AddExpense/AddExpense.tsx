@@ -12,7 +12,7 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
     const [body, setBody] = useState<string>('');
     const [createdAt, setCreatedAt] = useState<string>('')
 
-    const {register, handleSubmit, formState : { errors }} = useForm()
+    const {register, handleSubmit, formState : { errors }, control, getValues} = useForm()
 
     // const [userInput, setUserInput] = useState({
     //     title : '',
@@ -57,8 +57,17 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
     //     }
     // }
 
-    const mySubmitHandler = (data: any) => console.log(data);
+    const mySubmitHandler = (data: any) => {
+        console.log("Title : ", data.enteredTitle);
+        console.log(control);
+        console.log(getValues());
+        
+    };
 
+    const enteredTitleChangeHandler = (e : React.ChangeEvent<HTMLInputElement>) => {
+        // console.log(e.target.value);
+        console.log("Enetered Title : ", control._formValues);
+    }
     return (
         <div className="col-6 offset-3">
             <div className="card">
@@ -77,7 +86,10 @@ const AddExpense = (props : {onAddExpense : (expense : IExpense) => void}) => {
                                     <label htmlFor="title">Title :</label>
                                 </div>
                                 <div className="col-8">
-                                    <input type="text" {...register("enteredTitle", { required : true})} />
+                                    <input type="text"
+                                        {...register("enteredTitle", { 
+                                            required : true                            })} 
+                                        onChange = {enteredTitleChangeHandler}/>
                                     <p>{errors.enteredTitle && "Title is required field"}</p>
                                     {/* <input type="text" 
                                     id="title"
