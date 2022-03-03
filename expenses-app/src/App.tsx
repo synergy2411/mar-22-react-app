@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Expenses from './components/Expenses/Expenses';
 import Demo from "./components/demo/Demo";
@@ -10,12 +10,14 @@ import UseRef from "./components/Hooks/UseRef";
 import Todos from "./pages/Todos/Todos";
 import Header from "./components/Header/Header";
 import AddTodo from "./pages/Todos/AddTodo/AddTodo";
+import TodoEdit from "./pages/Todos/TodoEdit/TodoEdit";
 
 function App() {
   return (
     <div>
       <Header />
       <p>Hello World of React!</p>
+      <Switch>
       <Route path="/expenses">
         <Expenses />
       </Route>
@@ -28,12 +30,16 @@ function App() {
       <Route path="/use-ref">
         <UseRef />
       </Route>
-      <Route path="/todos">
+      <Route path="/todos" exact>
         <Todos />
+      </Route>
+      <Route path="/todos/:todoId">
+        <TodoEdit />
       </Route>
       <Route path="/add-todo">
         <AddTodo />
       </Route>
+      </Switch>
     </div>
   )
   

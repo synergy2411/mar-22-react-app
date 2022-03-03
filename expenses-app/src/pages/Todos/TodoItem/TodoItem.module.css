@@ -1,0 +1,7 @@
+.the-click{
+    transition: all 0.3s ease-in-out;
+}
+.the-click:hover{
+    cursor: pointer;
+    background-color: salmon;
+}

@@ -31,7 +31,9 @@ const AddTodo = () => {
       <div className="row">
         <div className="col-10 offset-1">
           <div className="card">
+            
             <div className="card-body">
+              <h4 className="text-center">Add New Task</h4>
               <form onSubmit={submitHandler}>
                 <div className="form-group">
                   <div className="row">

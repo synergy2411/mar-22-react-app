@@ -12,6 +12,7 @@ const Todos = () => {
                 setTodos(response.data)
             }).catch(console.log)
     }, [])
+    
     return (
         <div className="container">
             <div className="row">
