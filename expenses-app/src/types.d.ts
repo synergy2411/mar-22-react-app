@@ -1,11 +1,13 @@
 type AppState = {
-    counter : number,
-    result : Array<number>
+    counter? : number,
+    result? : Array<number>
 }
 
 type ActionType = {
     type : string,
-    payload? : number
+    payload? : number,
+    index?: number,
+    counter? : number
 }
 
 type DispatchType = (action : ActionType) => ActionType

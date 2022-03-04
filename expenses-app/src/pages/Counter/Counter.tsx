@@ -4,7 +4,7 @@ import StoreCounter from "./StoreResult/StoreResult";
 
 const Counter = () => {
 
-    let counter = useSelector((state : AppState)=> state.counter)
+    let counter = useSelector((state: {ctr : {counter : number}} )=> state['ctr'].counter)
 
     return (
         <div className="container">

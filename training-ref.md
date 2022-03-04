@@ -153,3 +153,5 @@ http://our-domain.com/products -> Products Component
 # MongoDB
 
 > npm i redux react-redux @types/react-redux
+
+> npm install --save redux-devtools-extension

@@ -4,12 +4,21 @@ export const SUBTRACT_COUNTER = "SUBTRACT_COUNTER"
 export const INCREMENT_BY_TEN = "INCREMENT_BY_TEN" 
 export const DECREMENT_BY_FIVE = "DECREMENT_BY_FIVE"
 export const STORE_RESULT = "STORE_RESULT"
+export const DELETE_RESULT = "DELETE_RESULT"
 
 // Action Creators
 
-export function onStoreResult() : ActionType{
+export function onDeleteResult(index : number) : ActionType{
     return {
-        type : STORE_RESULT
+        type : DELETE_RESULT,
+        index
+    }
+}
+
+export function onStoreResult(counter : number) : ActionType{
+    return {
+        type : STORE_RESULT,
+        counter
     }
 }
 
