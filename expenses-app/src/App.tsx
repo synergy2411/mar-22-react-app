@@ -11,6 +11,7 @@ import Todos from "./pages/Todos/Todos";
 import Header from "./components/Header/Header";
 import AddTodo from "./pages/Todos/AddTodo/AddTodo";
 import TodoEdit from "./pages/Todos/TodoEdit/TodoEdit";
+import Counter from "./pages/Counter/Counter";
 
 function App() {
   let config = [
@@ -54,6 +55,9 @@ function App() {
       </Route>
       <Route path="/add-todo">
         <AddTodo />
+      </Route>
+      <Route path="/counter">
+        <Counter />
       </Route>
       </Switch>
     </div>

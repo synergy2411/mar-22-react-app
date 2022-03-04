@@ -151,3 +151,5 @@ http://our-domain.com/products -> Products Component
 # Integrate redux with react
 # Test
 # MongoDB
+
+> npm i redux react-redux @types/react-redux
