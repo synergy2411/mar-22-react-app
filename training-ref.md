@@ -143,3 +143,11 @@ http://our-domain.com/about -> About Component
 http://our-domain.com/products -> Products Component
 
 # npm install react-router-dom@5 @types/react-router-dom@5
+
+
+
+
+# Redux
+# Integrate redux with react
+# Test
+# MongoDB

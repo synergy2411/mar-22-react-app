@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Expenses from './components/Expenses/Expenses';
 import Demo from "./components/demo/Demo";
@@ -13,14 +13,30 @@ import AddTodo from "./pages/Todos/AddTodo/AddTodo";
 import TodoEdit from "./pages/Todos/TodoEdit/TodoEdit";
 
 function App() {
+  let config = [
+    {
+      id : "p001",
+      path : "/expenses",
+      component : Expenses
+    }
+  ]
+
   return (
     <div>
       <Header />
       <p>Hello World of React!</p>
       <Switch>
-      <Route path="/expenses">
+       {config.map(c => {
+         return <Route path={c.path} key={c.id} component={c.component}>
+         </Route>
+       })}
+
+        <Route path="/" exact>
+          <Redirect to="todos"/>
+        </Route>
+      {/* <Route path="/expenses">
         <Expenses />
-      </Route>
+      </Route> */}
       <Route path="/use-effect">
         <UseEffect />
       </Route>
