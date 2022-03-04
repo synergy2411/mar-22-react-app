@@ -155,3 +155,5 @@ http://our-domain.com/products -> Products Component
 > npm i redux react-redux @types/react-redux
 
 > npm install --save redux-devtools-extension
+
+# jest : testing framework

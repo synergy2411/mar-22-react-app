@@ -12,6 +12,7 @@ import Header from "./components/Header/Header";
 import AddTodo from "./pages/Todos/AddTodo/AddTodo";
 import TodoEdit from "./pages/Todos/TodoEdit/TodoEdit";
 import Counter from "./pages/Counter/Counter";
+import Product from "./components/Product/Product";
 
 function App() {
   let config = [
@@ -26,6 +27,8 @@ function App() {
     <div>
       <Header />
       <p>Hello World of React!</p>
+      <Product />
+
       <Switch>
        {config.map(c => {
          return <Route path={c.path} key={c.id} component={c.component}>
