@@ -1,5 +1,6 @@
 type AppState = {
-    counter : number
+    counter : number,
+    result : Array<number>
 }
 
 type ActionType = {
